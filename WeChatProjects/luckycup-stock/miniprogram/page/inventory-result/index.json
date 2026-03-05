@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "盘点结果"
+  "navigationBarTitleText": "盘点记录",
+  "navigationBarBackgroundColor": "#141A2B",
+  "navigationBarTextStyle": "white"
 }
-
-

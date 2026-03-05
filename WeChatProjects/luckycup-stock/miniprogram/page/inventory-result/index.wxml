@@ -1,33 +1,71 @@
 <view class="page">
-  <view class="header-card">
-    <text class="store-name">{{store.store_name}}（编号 {{store.store_code}}）</text>
-    <text class="meta">盘点完成时间：{{finishedAt}}</text>
-    <text class="meta">盘点人：{{userNickname}}</text>
+  <!-- Store Header -->
+  <view class="store-header">
+    <view class="store-header-main">
+      <text class="store-name">{{store.store_name}}</text>
+      <text class="store-code">编号 · {{store.store_code}}</text>
+    </view>
+    <view class="store-snapshot-badge">
+      <text class="snapshot-badge-text">快照</text>
+    </view>
   </view>
 
-  <view class="tip">
-    <text>本页为历史盘点快照，仅供查看</text>
+  <!-- Meta Info -->
+  <view class="meta-bar">
+    <view class="meta-item">
+      <text class="meta-label">完成时间</text>
+      <text class="meta-value">{{finishedAt}}</text>
+    </view>
+    <view class="meta-sep"></view>
+    <view class="meta-item">
+      <text class="meta-label">盘点人</text>
+      <text class="meta-value">{{userNickname}}</text>
+    </view>
   </view>
 
-  <scroll-view scroll-y class="material-list">
-    <block wx:for="{{categories}}" wx:for-item="category" wx:key="category_id">
-      <view class="category">
-        <view class="category-title">{{category.name}}</view>
+  <!-- Read-only tip -->
+  <view class="readonly-bar">
+    <text class="readonly-text">本页为历史盘点快照，仅供查看</text>
+  </view>
+
+  <!-- Material List -->
+  <scroll-view
+    scroll-y
+    class="material-scroll"
+    enable-back-to-top
+    scroll-with-animation
+  >
+    <block wx:for="{{categories}}" wx:for-item="category" wx:key="category_id" wx:for-index="cIdx">
+      <view class="category-block">
+        <!-- Category Header -->
+        <view class="cat-header">
+          <view class="cat-dot cat-dot-{{cIdx % 3}}"></view>
+          <text class="cat-name">{{category.name}}</text>
+          <view class="cat-count-badge">
+            <text class="cat-count-text">{{category.materials.length}} 项</text>
+          </view>
+        </view>
+
+        <!-- Material Items -->
         <block wx:for="{{category.materials}}" wx:for-item="material" wx:key="material_name">
-          <view class="material-item">
-            <view class="material-main">
+          <view class="material-card">
+            <view class="material-accent material-accent-{{cIdx % 3}}"></view>
+            <view class="material-info">
               <view class="material-name-row">
                 <text class="material-name">{{material.name}}</text>
-                <text wx:if="{{material.isInactive}}" class="tag-inactive">已下架</text>
+                <view wx:if="{{material.isInactive}}" class="inactive-tag">
+                  <text class="inactive-tag-text">已下架</text>
+                </view>
               </view>
-              <text class="material-unit">单位：{{material.unit}}</text>
+              <text class="material-unit">{{material.unit}}</text>
             </view>
-            <text class="material-qty">数量：{{material.quantity}}</text>
+            <view class="material-qty-wrap">
+              <text class="material-qty">{{material.quantity}}</text>
+            </view>
           </view>
         </block>
       </view>
     </block>
+    <view style="height: 40rpx;"></view>
   </scroll-view>
 </view>
-
-

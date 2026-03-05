@@ -1,99 +1,209 @@
+page {
+  background-color: #F0F2F6;
+}
+
 .page {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  background-color: #f5f7fb;
+  background-color: #F0F2F6;
 }
 
-.header-card {
-  padding: 28rpx 32rpx 20rpx;
-  background-color: #ffffff;
-  box-shadow: 0 4rpx 16rpx rgba(15, 23, 42, 0.04);
+/* ── Store Header ── */
+.store-header {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 40rpx;
+  background: linear-gradient(135deg, #141A2B 0%, #1E2D50 100%);
+}
+
+.store-header-main {
+  flex: 1;
 }
 
 .store-name {
-  font-size: 30rpx;
-  font-weight: 500;
-  color: #111827;
-}
-
-.meta {
   display: block;
-  margin-top: 6rpx;
-  font-size: 24rpx;
-  color: #6b7280;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 8rpx;
 }
 
-.tip {
-  padding: 12rpx 32rpx;
-  font-size: 24rpx;
-  color: #6b7280;
+.store-code {
+  font-size: 22rpx;
+  color: rgba(255, 255, 255, 0.5);
 }
 
-.material-list {
-  flex: 1;
-  padding: 0 32rpx 32rpx;
-  box-sizing: border-box;
-}
-
-.category {
-  margin-top: 20rpx;
-}
-
-.category-title {
-  padding: 12rpx 20rpx;
+.store-snapshot-badge {
+  background-color: rgba(200, 151, 79, 0.2);
+  border: 1rpx solid rgba(200, 151, 79, 0.5);
   border-radius: 999rpx;
-  background-color: #e5edff;
-  font-size: 24rpx;
-  color: #1d4ed8;
-  display: inline-block;
-  margin-bottom: 16rpx;
+  padding: 6rpx 20rpx;
 }
 
-.material-item {
+.snapshot-badge-text {
+  font-size: 22rpx;
+  color: #C8974F;
+}
+
+/* ── Meta Bar ── */
+.meta-bar {
   display: flex;
-  justify-content: space-between;
-  padding: 20rpx 24rpx;
-  margin-bottom: 16rpx;
-  border-radius: 20rpx;
-  background-color: #ffffff;
-  box-shadow: 0 4rpx 16rpx rgba(15, 23, 42, 0.04);
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 20rpx 40rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
 }
 
-.material-main {
+.meta-item {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  margin-right: 16rpx;
+}
+
+.meta-label {
+  font-size: 20rpx;
+  color: #9CA3AF;
+  margin-bottom: 6rpx;
+}
+
+.meta-value {
+  font-size: 24rpx;
+  font-weight: 500;
+  color: #374151;
+}
+
+.meta-sep {
+  width: 1rpx;
+  height: 48rpx;
+  background-color: #E5E7EB;
+  margin: 0 24rpx;
+}
+
+/* ── Read-Only Bar ── */
+.readonly-bar {
+  padding: 14rpx 40rpx;
+  background-color: #EEF2FF;
+  border-left: 6rpx solid #3B6FE8;
+  margin: 16rpx 24rpx;
+  border-radius: 0 12rpx 12rpx 0;
+}
+
+.readonly-text {
+  font-size: 22rpx;
+  color: #3B6FE8;
+}
+
+/* ── Material Scroll ── */
+.material-scroll {
+  flex: 1;
+  height: 0;
+}
+
+/* ── Category Block ── */
+.category-block {
+  padding: 0 24rpx;
+}
+
+.cat-header {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 0 14rpx;
+}
+
+.cat-dot {
+  width: 14rpx;
+  height: 14rpx;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-right: 14rpx;
+}
+
+.cat-dot-0 { background-color: #3B6FE8; }
+.cat-dot-1 { background-color: #2DB07D; }
+.cat-dot-2 { background-color: #C8974F; }
+
+.cat-name {
+  flex: 1;
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #374151;
+}
+
+.cat-count-badge {
+  background-color: #E5E7EB;
+  border-radius: 999rpx;
+  padding: 4rpx 16rpx;
+}
+
+.cat-count-text {
+  font-size: 20rpx;
+  color: #6B7280;
+}
+
+/* ── Material Card ── */
+.material-card {
+  display: flex;
+  align-items: center;
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  margin-bottom: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 16rpx rgba(0, 0, 0, 0.05);
+}
+
+.material-accent {
+  width: 6rpx;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+.material-accent-0 { background-color: #3B6FE8; }
+.material-accent-1 { background-color: #2DB07D; }
+.material-accent-2 { background-color: #C8974F; }
+
+.material-info {
+  flex: 1;
+  padding: 24rpx 20rpx;
 }
 
 .material-name-row {
   display: flex;
   align-items: center;
+  margin-bottom: 6rpx;
 }
 
 .material-name {
   font-size: 28rpx;
+  font-weight: 500;
   color: #111827;
 }
 
-.tag-inactive {
+.inactive-tag {
   margin-left: 12rpx;
-  padding: 4rpx 12rpx;
+  background-color: #F3F4F6;
+  border: 1rpx solid #E5E7EB;
   border-radius: 999rpx;
-  border: 1rpx solid #9ca3af;
+  padding: 2rpx 12rpx;
+}
+
+.inactive-tag-text {
   font-size: 20rpx;
-  color: #6b7280;
+  color: #9CA3AF;
 }
 
 .material-unit {
-  margin-top: 4rpx;
   font-size: 22rpx;
-  color: #9ca3af;
+  color: #9CA3AF;
+}
+
+/* ── Quantity ── */
+.material-qty-wrap {
+  padding: 0 28rpx;
 }
 
 .material-qty {
-  font-size: 26rpx;
+  font-size: 32rpx;
+  font-weight: 700;
   color: #111827;
 }
-
-
