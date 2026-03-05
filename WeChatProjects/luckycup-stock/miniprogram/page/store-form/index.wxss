@@ -1,48 +1,118 @@
+page {
+  background-color: #F0F2F6;
+}
+
 .page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: #f5f7fb;
+  min-height: 100vh;
+  background-color: #F0F2F6;
 }
 
-.form {
-  padding: 32rpx;
+/* ── Page Header ── */
+.page-header {
+  padding: 48rpx 40rpx 36rpx;
 }
 
-.form-item {
-  margin-bottom: 32rpx;
-}
-
-.label {
+.page-title {
   display: block;
-  margin-bottom: 12rpx;
-  font-size: 26rpx;
-  color: #4b5563;
-}
-
-.input {
-  padding: 20rpx 24rpx;
-  border-radius: 16rpx;
-  background-color: #ffffff;
-  font-size: 28rpx;
+  font-size: 44rpx;
+  font-weight: 700;
   color: #111827;
-  box-shadow: 0 4rpx 12rpx rgba(15, 23, 42, 0.04);
+  margin-bottom: 10rpx;
 }
 
-.placeholder {
-  color: #9ca3af;
+.page-sub {
+  font-size: 26rpx;
+  color: #9CA3AF;
 }
 
+/* ── Form Card ── */
+.form-card {
+  margin: 0 24rpx;
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+  padding: 8rpx 36rpx;
+  box-shadow: 0 4rpx 24rpx rgba(0, 0, 0, 0.06);
+}
+
+.field {
+  padding: 32rpx 0 20rpx;
+  position: relative;
+}
+
+.field:not(:last-child) {
+  border-bottom: 1rpx solid #F3F4F6;
+}
+
+.field-label {
+  display: block;
+  font-size: 22rpx;
+  font-weight: 600;
+  color: #9CA3AF;
+  letter-spacing: 1rpx;
+  text-transform: uppercase;
+  margin-bottom: 16rpx;
+}
+
+.field-input {
+  width: 100%;
+  font-size: 32rpx;
+  color: #111827;
+  font-weight: 500;
+  height: 56rpx;
+  line-height: 56rpx;
+}
+
+.field-placeholder {
+  color: #D1D5DB;
+  font-weight: 400;
+  font-size: 28rpx;
+}
+
+.field-line {
+  display: none;
+}
+
+/* ── Tip ── */
+.form-tip {
+  padding: 20rpx 40rpx 0;
+}
+
+.tip-text {
+  font-size: 22rpx;
+  color: #9CA3AF;
+  line-height: 1.7;
+}
+
+/* ── Footer ── */
 .footer {
   margin-top: auto;
-  padding: 24rpx 32rpx;
-  box-shadow: 0 -4rpx 12rpx rgba(15, 23, 42, 0.04);
-  background-color: #ffffff;
+  padding: 32rpx 40rpx 52rpx;
+  background-color: #FFFFFF;
+  box-shadow: 0 -2rpx 20rpx rgba(0, 0, 0, 0.07);
 }
 
-.btn {
+.save-btn {
   width: 100%;
+  height: 96rpx;
   border-radius: 999rpx;
+  background-color: #141A2B;
+  color: #FFFFFF;
+  font-size: 30rpx;
+  font-weight: 600;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(20, 26, 43, 0.25);
 }
 
+.save-btn::after {
+  border: none;
+}
 
+.save-btn[disabled] {
+  background-color: #9CA3AF;
+  box-shadow: none;
+}

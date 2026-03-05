@@ -1,33 +1,53 @@
 <view class="page">
-  <view class="header">
-    <text class="title">我的门店</text>
-    <text class="subtitle">一个微信账号可以管理多家门店</text>
+  <!-- Hero Header -->
+  <view class="hero">
+    <view class="hero-top">
+      <text class="brand-cn">幸运咖</text>
+      <text class="brand-en">LUCKY CUP</text>
+    </view>
+    <text class="hero-sub">库存盘点管理系统</text>
   </view>
 
+  <!-- Section Header -->
+  <view class="section-bar">
+    <view class="section-dot"></view>
+    <text class="section-title">我的门店</text>
+    <view class="section-badge">
+      <text class="section-badge-text">{{stores.length}} 家</text>
+    </view>
+  </view>
+
+  <!-- Store List -->
   <block wx:if="{{stores.length}}">
     <view class="store-list">
       <block wx:for="{{stores}}" wx:key="id">
-        <view class="store-item" bindtap="onTapStore" data-id="{{item.id}}">
-          <view class="store-main">
+        <view class="store-card" bindtap="onTapStore" data-id="{{item.id}}">
+          <view class="store-accent"></view>
+          <view class="store-body">
             <text class="store-name">{{item.store_name}}</text>
-            <text class="store-code">门店编号：{{item.store_code}}</text>
+            <text class="store-code">编号 · {{item.store_code}}</text>
           </view>
-          <button class="store-enter" size="mini" type="primary">进入盘点</button>
+          <view class="store-chevron">
+            <text class="chevron-icon">›</text>
+          </view>
         </view>
       </block>
     </view>
   </block>
 
+  <!-- Empty State -->
   <block wx:else>
-    <view class="empty">
-      <text class="empty-title">你还没有门店</text>
-      <text class="empty-subtitle">新增门店后即可开始盘点</text>
+    <view class="empty-state">
+      <view class="empty-icon-wrap">
+        <text class="empty-icon">🏪</text>
+      </view>
+      <text class="empty-title">暂无门店</text>
+      <text class="empty-desc">添加门店后即可开始库存盘点</text>
     </view>
   </block>
 
+  <!-- Footer -->
   <view class="footer">
-    <button class="primary-btn" type="primary" bindtap="onTapAddStore">+ 新增门店</button>
+    <button class="add-btn" bindtap="onTapAddStore">+ 新增门店</button>
   </view>
 </view>
-
-
