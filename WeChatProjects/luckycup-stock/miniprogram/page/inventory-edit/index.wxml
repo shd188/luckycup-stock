@@ -1,0 +1,43 @@
+<view class="page">
+  <view class="store-info">
+    <text class="store-name">{{store.store_name}}</text>
+    <text class="store-code">门店编号：{{store.store_code}}</text>
+  </view>
+
+  <view class="tip">
+    <text>请填写所有物料库存数量，可填写 0，不可留空</text>
+  </view>
+
+  <scroll-view scroll-y class="material-list">
+    <block wx:for="{{categories}}" wx:for-item="category" wx:key="category_id">
+      <view class="category">
+        <view class="category-title">{{category.name}}</view>
+        <block wx:for="{{category.materials}}" wx:for-item="material" wx:key="material_id">
+          <view class="material-item">
+            <view class="material-main">
+              <text class="material-name">{{material.name}}</text>
+              <text class="material-unit">单位：{{material.unit}}</text>
+            </view>
+            <input
+              class="material-input"
+              type="number"
+              placeholder="数量"
+              placeholder-class="placeholder"
+              value="{{material.quantity}}"
+              data-category-id="{{category.category_id}}"
+              data-material-id="{{material.material_id}}"
+              bindinput="onInputQuantity"
+            />
+          </view>
+        </block>
+      </view>
+    </block>
+  </scroll-view>
+
+  <view class="footer">
+    <view class="footer-tip">* 所有物料都需填写，可填 0</view>
+    <button class="submit-btn" type="primary" bindtap="onSubmit">提交盘点</button>
+  </view>
+</view>
+
+

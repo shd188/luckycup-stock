@@ -1,0 +1,99 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f7fb;
+}
+
+.header-card {
+  padding: 28rpx 32rpx 20rpx;
+  background-color: #ffffff;
+  box-shadow: 0 4rpx 16rpx rgba(15, 23, 42, 0.04);
+}
+
+.store-name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #111827;
+}
+
+.meta {
+  display: block;
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+.tip {
+  padding: 12rpx 32rpx;
+  font-size: 24rpx;
+  color: #6b7280;
+}
+
+.material-list {
+  flex: 1;
+  padding: 0 32rpx 32rpx;
+  box-sizing: border-box;
+}
+
+.category {
+  margin-top: 20rpx;
+}
+
+.category-title {
+  padding: 12rpx 20rpx;
+  border-radius: 999rpx;
+  background-color: #e5edff;
+  font-size: 24rpx;
+  color: #1d4ed8;
+  display: inline-block;
+  margin-bottom: 16rpx;
+}
+
+.material-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 24rpx;
+  margin-bottom: 16rpx;
+  border-radius: 20rpx;
+  background-color: #ffffff;
+  box-shadow: 0 4rpx 16rpx rgba(15, 23, 42, 0.04);
+}
+
+.material-main {
+  display: flex;
+  flex-direction: column;
+  margin-right: 16rpx;
+}
+
+.material-name-row {
+  display: flex;
+  align-items: center;
+}
+
+.material-name {
+  font-size: 28rpx;
+  color: #111827;
+}
+
+.tag-inactive {
+  margin-left: 12rpx;
+  padding: 4rpx 12rpx;
+  border-radius: 999rpx;
+  border: 1rpx solid #9ca3af;
+  font-size: 20rpx;
+  color: #6b7280;
+}
+
+.material-unit {
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #9ca3af;
+}
+
+.material-qty {
+  font-size: 26rpx;
+  color: #111827;
+}
+
+

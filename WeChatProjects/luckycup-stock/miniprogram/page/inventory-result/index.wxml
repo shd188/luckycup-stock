@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="header-card">
+    <text class="store-name">{{store.store_name}}（编号 {{store.store_code}}）</text>
+    <text class="meta">盘点完成时间：{{finishedAt}}</text>
+    <text class="meta">盘点人：{{userNickname}}</text>
+  </view>
+
+  <view class="tip">
+    <text>本页为历史盘点快照，仅供查看</text>
+  </view>
+
+  <scroll-view scroll-y class="material-list">
+    <block wx:for="{{categories}}" wx:for-item="category" wx:key="category_id">
+      <view class="category">
+        <view class="category-title">{{category.name}}</view>
+        <block wx:for="{{category.materials}}" wx:for-item="material" wx:key="material_name">
+          <view class="material-item">
+            <view class="material-main">
+              <view class="material-name-row">
+                <text class="material-name">{{material.name}}</text>
+                <text wx:if="{{material.isInactive}}" class="tag-inactive">已下架</text>
+              </view>
+              <text class="material-unit">单位：{{material.unit}}</text>
+            </view>
+            <text class="material-qty">数量：{{material.quantity}}</text>
+          </view>
+        </block>
+      </view>
+    </block>
+  </scroll-view>
+</view>
+
+

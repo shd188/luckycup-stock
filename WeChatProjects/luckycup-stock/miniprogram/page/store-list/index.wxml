@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="header">
+    <text class="title">我的门店</text>
+    <text class="subtitle">一个微信账号可以管理多家门店</text>
+  </view>
+
+  <block wx:if="{{stores.length}}">
+    <view class="store-list">
+      <block wx:for="{{stores}}" wx:key="id">
+        <view class="store-item" bindtap="onTapStore" data-id="{{item.id}}">
+          <view class="store-main">
+            <text class="store-name">{{item.store_name}}</text>
+            <text class="store-code">门店编号：{{item.store_code}}</text>
+          </view>
+          <button class="store-enter" size="mini" type="primary">进入盘点</button>
+        </view>
+      </block>
+    </view>
+  </block>
+
+  <block wx:else>
+    <view class="empty">
+      <text class="empty-title">你还没有门店</text>
+      <text class="empty-subtitle">新增门店后即可开始盘点</text>
+    </view>
+  </block>
+
+  <view class="footer">
+    <button class="primary-btn" type="primary" bindtap="onTapAddStore">+ 新增门店</button>
+  </view>
+</view>
+
+

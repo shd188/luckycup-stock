@@ -1,0 +1,48 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f7fb;
+}
+
+.form {
+  padding: 32rpx;
+}
+
+.form-item {
+  margin-bottom: 32rpx;
+}
+
+.label {
+  display: block;
+  margin-bottom: 12rpx;
+  font-size: 26rpx;
+  color: #4b5563;
+}
+
+.input {
+  padding: 20rpx 24rpx;
+  border-radius: 16rpx;
+  background-color: #ffffff;
+  font-size: 28rpx;
+  color: #111827;
+  box-shadow: 0 4rpx 12rpx rgba(15, 23, 42, 0.04);
+}
+
+.placeholder {
+  color: #9ca3af;
+}
+
+.footer {
+  margin-top: auto;
+  padding: 24rpx 32rpx;
+  box-shadow: 0 -4rpx 12rpx rgba(15, 23, 42, 0.04);
+  background-color: #ffffff;
+}
+
+.btn {
+  width: 100%;
+  border-radius: 999rpx;
+}
+
+

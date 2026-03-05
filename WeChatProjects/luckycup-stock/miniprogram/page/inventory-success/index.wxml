@@ -1,0 +1,19 @@
+<view class="page">
+  <view class="content">
+    <view class="icon-success"></view>
+    <text class="title">盘点已提交</text>
+    <view class="info-card">
+      <text class="row">门店：{{store.store_name}}（编号 {{store.store_code}}）</text>
+      <text class="row">完成时间：{{finishedAt}}</text>
+      <text class="row">盘点人：{{userNickname}}</text>
+    </view>
+    <text class="tip">本次盘点结果已锁定，不可修改。</text>
+    <text class="tip">如需分享，请点击右上角「···」并选择“转发给朋友”。</text>
+  </view>
+
+  <view class="footer">
+    <button class="btn" type="primary" bindtap="onBack">返回门店列表</button>
+  </view>
+</view>
+
+

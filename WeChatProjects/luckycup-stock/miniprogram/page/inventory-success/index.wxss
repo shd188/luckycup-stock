@@ -1,0 +1,70 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f7fb;
+}
+
+.content {
+  flex: 1;
+  padding: 60rpx 40rpx 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon-success {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  background: radial-gradient(circle at 30% 30%, #e0f2fe, #1d4ed8);
+  margin-bottom: 32rpx;
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 24rpx;
+}
+
+.info-card {
+  width: 100%;
+  padding: 24rpx 28rpx;
+  border-radius: 20rpx;
+  background-color: #ffffff;
+  box-shadow: 0 4rpx 16rpx rgba(15, 23, 42, 0.06);
+  text-align: left;
+  margin-bottom: 24rpx;
+}
+
+.row {
+  display: block;
+  font-size: 26rpx;
+  color: #374151;
+  margin-bottom: 8rpx;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+.tip {
+  font-size: 24rpx;
+  color: #6b7280;
+  margin-top: 4rpx;
+}
+
+.footer {
+  padding: 24rpx 32rpx 32rpx;
+  background-color: #ffffff;
+  box-shadow: 0 -4rpx 12rpx rgba(15, 23, 42, 0.04);
+}
+
+.btn {
+  width: 100%;
+  border-radius: 999rpx;
+}
+
+

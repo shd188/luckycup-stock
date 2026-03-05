@@ -1,0 +1,14 @@
+{
+  "name": "luckycupInventory",
+  "version": "1.0.0",
+  "description": "Luckycup inventory cloud function",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"no test\""
+  },
+  "dependencies": {
+    "wx-server-sdk": "latest"
+  }
+}
+
+

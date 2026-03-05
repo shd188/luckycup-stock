@@ -1,0 +1,31 @@
+<view class="page">
+  <view class="form">
+    <view class="form-item">
+      <text class="label">门店编号</text>
+      <input
+        class="input"
+        placeholder="请输入总部分配的门店编号"
+        placeholder-class="placeholder"
+        value="{{storeCode}}"
+        bindinput="onInputStoreCode"
+      />
+    </view>
+
+    <view class="form-item">
+      <text class="label">门店名称</text>
+      <input
+        class="input"
+        placeholder="请输入门店名称"
+        placeholder-class="placeholder"
+        value="{{storeName}}"
+        bindinput="onInputStoreName"
+      />
+    </view>
+  </view>
+
+  <view class="footer">
+    <button class="btn" bindtap="onSubmit" type="primary">保存</button>
+  </view>
+</view>
+
+
