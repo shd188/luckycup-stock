@@ -109,6 +109,11 @@ async function handleCreateOrJoinStore(openid, data) {
     return failure(4001, '门店编号和门店名称不能为空')
   }
 
+  // 校验门店编号：必须是8位数字且以630开头
+  if (!/^630\d{5}$/.test(storeCode)) {
+    return failure(4008, '请输入正确的门店编号')
+  }
+
   const user = await getOrCreateUser(openid, data.user_profile)
   const storeRes = await db.collection('stores').where({ store_code: storeCode }).limit(1).get()
   const now = new Date()
@@ -344,8 +349,9 @@ async function handleGetInventoryDetail(data) {
     db.collection('materials').limit(1000).get()
   ])
 
+  // 兼容两种字段名：name 或 material_name
   const activeMaterialNames = new Set(
-    materialsRes.data.filter(item => isActiveFlag(item.is_active)).map(item => item.name)
+    materialsRes.data.filter(item => isActiveFlag(item.is_active)).map(item => item.material_name || item.name)
   )
 
   const sortedItems = itemsRes.data.slice().sort((a, b) => {

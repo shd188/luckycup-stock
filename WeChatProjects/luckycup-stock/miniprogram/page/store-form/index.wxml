@@ -4,8 +4,9 @@
       <text class="label">门店编号</text>
       <input
         class="input"
-        placeholder="请输入总部分配的门店编号"
+        placeholder="请输入门店编号"
         placeholder-class="placeholder"
+        type="number"
         value="{{storeCode}}"
         bindinput="onInputStoreCode"
       />

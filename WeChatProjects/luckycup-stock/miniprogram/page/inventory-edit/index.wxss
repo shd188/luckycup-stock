@@ -32,6 +32,7 @@
   flex: 1;
   padding: 0 32rpx 32rpx;
   box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .category {
@@ -46,6 +47,20 @@
   color: #1d4ed8;
   display: inline-block;
   margin-bottom: 16rpx;
+}
+
+.sticky-title {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-left: -32rpx;
+  margin-right: -32rpx;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+  padding-top: 16rpx;
+  padding-bottom: 16rpx;
+  background-color: #f5f7fb;
+  backdrop-filter: blur(10rpx);
 }
 
 .material-item {

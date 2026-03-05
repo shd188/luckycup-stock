@@ -6,7 +6,12 @@ Page({
   },
 
   onInputStoreCode(e) {
-    this.setData({ storeCode: e.detail.value.trim() })
+    // 只允许输入数字，最多8位
+    let value = e.detail.value.replace(/[^\d]/g, '')
+    if (value.length > 8) {
+      value = value.substring(0, 8)
+    }
+    this.setData({ storeCode: value })
   },
 
   onInputStoreName(e) {
@@ -47,6 +52,11 @@ Page({
     const { storeCode, storeName } = this.data
     if (!storeCode) {
       wx.showToast({ title: '请填写门店编号', icon: 'none' })
+      return
+    }
+    // 校验门店编号：必须是8位数字且以630开头
+    if (!/^630\d{5}$/.test(storeCode)) {
+      wx.showToast({ title: '请输入正确的门店编号', icon: 'none' })
       return
     }
     if (!storeName) {

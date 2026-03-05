@@ -8,10 +8,10 @@
     <text>请填写所有物料库存数量，可填写 0，不可留空</text>
   </view>
 
-  <scroll-view scroll-y class="material-list">
+  <view class="material-list">
     <block wx:for="{{categories}}" wx:for-item="category" wx:key="category_id">
       <view class="category">
-        <view class="category-title">{{category.name}}</view>
+        <view class="category-title sticky-title">{{category.name}}</view>
         <block wx:for="{{category.materials}}" wx:for-item="material" wx:key="material_id">
           <view class="material-item">
             <view class="material-main">
@@ -32,7 +32,7 @@
         </block>
       </view>
     </block>
-  </scroll-view>
+  </view>
 
   <view class="footer">
     <view class="footer-tip">* 所有物料都需填写，可填 0</view>
