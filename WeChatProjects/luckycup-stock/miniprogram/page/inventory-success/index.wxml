@@ -1,4 +1,25 @@
 <view class="page">
+  <!-- Share Guide Overlay -->
+  <view wx:if="{{showGuide}}" class="guide-overlay" bindtap="onTapGuide">
+    <!-- 右上角气泡 -->
+    <view class="guide-bubble-area">
+      <view class="guide-bubble-tail"></view>
+      <view class="guide-bubble">
+        <text class="guide-bubble-text">点击这里分享</text>
+      </view>
+    </view>
+    <!-- 中部说明 -->
+    <view class="guide-body">
+      <view class="guide-icon-wrap">
+        <text class="guide-icon">📤</text>
+      </view>
+      <text class="guide-title">发送给店长 / 老板</text>
+      <text class="guide-desc">点击右上角「···」选择转发，将本次盘点结果发给负责人</text>
+      <view class="guide-dismiss-btn">
+        <text class="guide-dismiss-text">我知道了</text>
+      </view>
+    </view>
+  </view>
   <!-- Success Content -->
   <view class="content">
     <!-- Icon -->
