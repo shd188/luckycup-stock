@@ -140,3 +140,102 @@ page {
 .back-btn::after {
   border: none;
 }
+
+/* ── Share Guide Overlay ── */
+.guide-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.78);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+/* 右上角气泡 */
+.guide-bubble-area {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 0;
+  padding-right: 20rpx;
+}
+
+/* 尾巴在气泡上方，指向导航栏 ··· */
+.guide-bubble-tail {
+  width: 0;
+  height: 0;
+  border-left: 18rpx solid transparent;
+  border-right: 18rpx solid transparent;
+  border-bottom: 22rpx solid #FFFFFF;
+  margin-right: 100rpx;
+}
+
+.guide-bubble {
+  background-color: #FFFFFF;
+  border-radius: 16rpx;
+  padding: 14rpx 28rpx;
+}
+
+.guide-bubble-text {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #141A2B;
+}
+
+/* 中部主体 */
+.guide-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 64rpx 160rpx;
+}
+
+.guide-icon-wrap {
+  width: 112rpx;
+  height: 112rpx;
+  border-radius: 56rpx;
+  background-color: rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 36rpx;
+}
+
+.guide-icon {
+  font-size: 52rpx;
+  line-height: 1;
+}
+
+.guide-title {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 20rpx;
+  letter-spacing: 2rpx;
+}
+
+.guide-desc {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 64rpx;
+}
+
+.guide-dismiss-btn {
+  background-color: #FFFFFF;
+  border-radius: 999rpx;
+  padding: 22rpx 80rpx;
+}
+
+.guide-dismiss-text {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #141A2B;
+}

@@ -5,7 +5,8 @@ Page({
     inventoryId: '',
     store: {},
     finishedAt: '',
-    userNickname: ''
+    userNickname: '',
+    showGuide: true
   },
 
   async onLoad(options) {
@@ -45,6 +46,10 @@ Page({
     } catch (error) {
       wx.showToast({ title: '加载失败，请重试', icon: 'none' })
     }
+  },
+
+  onTapGuide() {
+    this.setData({ showGuide: false })
   },
 
   onBack() {
