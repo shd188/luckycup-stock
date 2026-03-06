@@ -68,12 +68,29 @@ Page({
   onInputQuantity(e) {
     const categoryId = e.currentTarget.dataset.categoryId
     const materialId = e.currentTarget.dataset.materialId
+    const categoryIndex = e.currentTarget.dataset.categoryIndex
+    const materialIndex = e.currentTarget.dataset.materialIndex
     let value = e.detail.value
-
-    if (!categoryId || !materialId) return
 
     // 只允许输入数字（包括小数点，但这里库存应该是整数，所以只允许整数）
     value = value.replace(/[^\d]/g, '')
+
+    if (
+      Number.isInteger(categoryIndex) &&
+      Number.isInteger(materialIndex) &&
+      this.data.categories[categoryIndex] &&
+      this.data.categories[categoryIndex].materials &&
+      this.data.categories[categoryIndex].materials[materialIndex]
+    ) {
+      const currentValue = this.data.categories[categoryIndex].materials[materialIndex].quantity
+      if (String(currentValue || '') === value) return
+      this.setData({
+        [`categories[${categoryIndex}].materials[${materialIndex}].quantity`]: value
+      })
+      return
+    }
+
+    if (!categoryId || !materialId) return
 
     const categories = this.data.categories.map(category => {
       if (category.category_id !== categoryId) return category
