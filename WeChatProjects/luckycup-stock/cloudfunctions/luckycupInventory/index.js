@@ -5,6 +5,7 @@ cloud.init({
 })
 
 const db = cloud.database()
+const _ = db.command
 
 function isActiveFlag(value) {
   // 兼容老数据：未设置 is_active 的视为启用
@@ -87,6 +88,24 @@ async function ensureStoreMembership(userId, storeId) {
   return relRes.data.length > 0
 }
 
+async function findStoreByCode(storeCode) {
+  const codes = [storeCode]
+  const asNum = Number(storeCode)
+  if (Number.isFinite(asNum)) {
+    codes.push(asNum)
+  }
+
+  const res = await db.collection('stores').where({
+    store_code: _.in(codes)
+  }).limit(100).get()
+
+  if (!res.data.length) return null
+
+  // 历史数据可能混有字符串/数字，优先精确字符串匹配，其次数字匹配
+  const exactString = res.data.find(item => String(item.store_code) === storeCode)
+  return exactString || res.data[0]
+}
+
 async function handleGetUserAndStores(openid) {
   const user = await getOrCreateUser(openid)
   const stores = await listStoresByUserId(user._id)
@@ -115,10 +134,10 @@ async function handleCreateOrJoinStore(openid, data) {
   }
 
   const user = await getOrCreateUser(openid, data.user_profile)
-  const storeRes = await db.collection('stores').where({ store_code: storeCode }).limit(1).get()
+  const existingStore = await findStoreByCode(storeCode)
   const now = new Date()
 
-  if (!storeRes.data.length) {
+  if (!existingStore) {
     const addStoreRes = await db.collection('stores').add({
       data: {
         store_code: storeCode,
@@ -147,19 +166,17 @@ async function handleCreateOrJoinStore(openid, data) {
     }, '门店创建成功')
   }
 
-  const existingStore = storeRes.data[0]
   const hasJoined = await ensureStoreMembership(user._id, existingStore._id)
-  const sameName = existingStore.store_name === storeName
 
-  if (!forceJoin && !hasJoined) {
+  // 门店编号已存在时，必须先走确认弹窗，再决定是否关联该门店
+  if (!forceJoin) {
     return success({
       require_confirm: true,
       created: false,
-      joined: false,
-      same_name: sameName,
+      joined: hasJoined,
       store: {
         id: existingStore._id,
-        store_code: existingStore.store_code,
+        store_code: String(existingStore.store_code || ''),
         store_name: existingStore.store_name
       }
     }, '门店已存在，请确认后加入')
@@ -182,7 +199,7 @@ async function handleCreateOrJoinStore(openid, data) {
     joined: true,
     store: {
       id: existingStore._id,
-      store_code: existingStore.store_code,
+      store_code: String(existingStore.store_code || ''),
       store_name: existingStore.store_name
     }
   }, hasJoined ? '你已加入该门店' : '加入门店成功')

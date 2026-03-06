@@ -77,38 +77,6 @@ App({
     openid: null,
     iconTabbar: '/page/weui/example/images/icon_tabbar.png',
   },
-  // lazy loading openid
-  getUserOpenId(callback) {
-    const self = this
-
-    if (self.globalData.openid) {
-      callback(null, self.globalData.openid)
-    } else {
-      wx.login({
-        success(data) {
-          wx.cloud.callFunction({
-            name: 'login',
-            data: {
-              action: 'openid'
-            },
-            success: res => {
-              console.log('拉取openid成功', res)
-              self.globalData.openid = res.result.openid
-              callback(null, self.globalData.openid)
-            },
-            fail: err => {
-              console.log('拉取用户openid失败，将无法正常使用开放接口等服务', res)
-              callback(res)
-            }
-          })
-        },
-        fail(err) {
-          console.log('wx.login 接口调用失败，将无法正常使用开放接口等服务', err)
-          callback(err)
-        }
-      })
-    }
-  },
   // 通过云函数获取用户 openid，支持回调或 Promise
   getUserOpenIdViaCloud() {
     return wx.cloud.callFunction({
