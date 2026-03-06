@@ -15,7 +15,8 @@ Page({
   },
 
   onInputStoreName(e) {
-    this.setData({ storeName: e.detail.value.trim() })
+    const value = e.detail.value.trim()
+    this.setData({ storeName: value })
   },
 
   async getUserProfileForAudit() {
@@ -47,6 +48,26 @@ Page({
     return res.result || {}
   },
 
+  showJoinStoreConfirmModal(store) {
+    const content = `系统已存在门店：${store.store_name || ''}（编号 ${store.store_code || ''}）。\n是否确认加入此门店？`
+    return new Promise(resolve => {
+      const openModal = () => {
+        wx.showModal({
+          title: '门店已存在',
+          content,
+          confirmText: '确认加入',
+          cancelText: '取消',
+          success: (res) => resolve(!!(res && res.confirm)),
+          fail: () => resolve(null)
+        })
+      }
+
+      wx.hideKeyboard({
+        complete: () => setTimeout(openModal, 80)
+      })
+    })
+  },
+
   async onSubmit() {
     if (this.data.submitting) return
     const { storeCode, storeName } = this.data
@@ -65,6 +86,7 @@ Page({
     }
 
     this.setData({ submitting: true })
+    wx.showLoading({ title: '保存中...', mask: true })
     try {
       const userProfile = await this.getUserProfileForAudit()
       const payload = {
@@ -82,18 +104,16 @@ Page({
       const data = result.data || {}
       if (data.require_confirm) {
         const store = data.store || {}
-        const content = `系统已存在门店：${store.store_name || ''}（编号 ${store.store_code || ''}）。\n如是你的门店，可点击“加入该门店”。`
-        const modalRes = await wx.showModal({
-          title: '门店已存在',
-          content,
-          confirmText: '加入该门店',
-          cancelText: '取消'
-        })
-        if (!modalRes.confirm) return
+        const confirmed = await this.showJoinStoreConfirmModal(store)
+        if (confirmed === null) {
+          wx.showToast({ title: '弹框失败，请重试', icon: 'none' })
+          return
+        }
+        if (!confirmed) return
 
         const joinResult = await this.callCreateOrJoinStore({
-          store_code: storeCode,
-          store_name: storeName,
+          store_code: store.store_code || storeCode,
+          store_name: store.store_name || storeName,
           force_join: true,
           user_profile: userProfile
         })
@@ -108,9 +128,9 @@ Page({
         wx.navigateBack()
       }, 300)
     } catch (error) {
-      console.log(error);
       wx.showToast({ title: '保存失败，请稍后重试', icon: 'none' })
     } finally {
+      wx.hideLoading()
       this.setData({ submitting: false })
     }
   }
