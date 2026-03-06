@@ -16,11 +16,15 @@
   </view>
 
   <!-- Material List (scrollable) -->
-  <scroll-view scroll-y class="material-scroll" enable-back-to-top>
+  <scroll-view
+    scroll-y
+    class="material-scroll"
+    enable-back-to-top
+  >
     <block wx:for="{{categories}}" wx:for-item="category" wx:key="category_id" wx:for-index="cIdx">
       <view class="category-block">
         <!-- Sticky Category Title -->
-        <view class="cat-header sticky-cat">
+        <view class="cat-header">
           <view class="cat-dot cat-dot-{{cIdx % 3}}"></view>
           <text class="cat-name">{{category.name}}</text>
           <view class="cat-count-badge">
@@ -29,7 +33,7 @@
         </view>
 
         <!-- Material Items -->
-        <block wx:for="{{category.materials}}" wx:for-item="material" wx:key="material_id">
+        <block wx:for="{{category.materials}}" wx:for-item="material" wx:key="material_id" wx:for-index="mIdx">
           <view class="material-card">
             <view class="material-accent material-accent-{{cIdx % 3}}"></view>
             <view class="material-info">
@@ -45,7 +49,11 @@
                 value="{{material.quantity}}"
                 data-category-id="{{category.category_id}}"
                 data-material-id="{{material.material_id}}"
+                data-category-index="{{cIdx}}"
+                data-material-index="{{mIdx}}"
                 bindinput="onInputQuantity"
+                always-embed
+                cursor-spacing="20"
               />
             </view>
           </view>

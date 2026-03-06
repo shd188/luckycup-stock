@@ -79,17 +79,6 @@ page {
   padding: 20rpx 0 14rpx;
 }
 
-.sticky-cat {
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  background-color: #F0F2F6;
-  margin-left: -24rpx;
-  margin-right: -24rpx;
-  padding-left: 24rpx;
-  padding-right: 24rpx;
-}
-
 .cat-dot {
   width: 14rpx;
   height: 14rpx;
